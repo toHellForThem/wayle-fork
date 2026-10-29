@@ -48,6 +48,7 @@ fn main() {
             Commands::Panel { command } => cli::panel::execute(command).await,
             Commands::Power { command } => cli::power::execute(command).await,
             Commands::Systray { command } => cli::systray::execute(command).await,
+            Commands::Timer { command } => cli::timer::execute(command).await,
             Commands::Wallpaper { command } => cli::wallpaper::execute(command).await,
             Commands::Idle { command } => cli::idle::execute(command).await,
             Commands::Shell | Commands::Completions { .. } => unreachable!(),

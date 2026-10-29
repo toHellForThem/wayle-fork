@@ -21,6 +21,8 @@ pub mod power;
 pub mod style;
 /// System tray commands
 pub mod systray;
+/// Timer control commands
+pub mod timer;
 /// Wallpaper control commands
 pub mod wallpaper;
 

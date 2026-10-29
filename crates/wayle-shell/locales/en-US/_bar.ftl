@@ -41,3 +41,22 @@ bar-storage-multiple = Multiple
 bar-media-playing = Playing
 bar-media-paused = Paused
 bar-media-stopped = Stopped
+
+## Timer
+bar-timer-running = Running
+bar-timer-paused = Paused
+bar-timer-stopped = Stopped
+
+## Timer dropdown
+dropdown-timer-title = Timer
+dropdown-timer-days = Days
+dropdown-timer-hours = Hours
+dropdown-timer-minutes = Minutes
+dropdown-timer-seconds = Seconds
+dropdown-timer-command = Command
+dropdown-timer-start = Start
+dropdown-timer-pause = Pause
+dropdown-timer-play = Play
+dropdown-timer-resume = Resume
+dropdown-timer-stop = Stop
+dropdown-timer-reset = Reset

@@ -104,6 +104,7 @@ export default defineConfig({
             { text: 'separator', link: '/config/modules/separator' },
             { text: 'storage', link: '/config/modules/storage' },
             { text: 'systray', link: '/config/modules/systray' },
+            { text: 'timer', link: '/config/modules/timer' },
             { text: 'volume', link: '/config/modules/volume' },
             { text: 'weather', link: '/config/modules/weather' },
             { text: 'window-title', link: '/config/modules/window-title' },

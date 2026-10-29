@@ -26,6 +26,7 @@ mod ram;
 mod separator;
 mod storage;
 mod systray;
+mod timer;
 mod volume;
 mod weather;
 mod window_title;
@@ -66,6 +67,7 @@ pub use ram::RamConfig;
 pub use separator::SeparatorConfig;
 pub use storage::{StorageConfig, StorageMountPoint};
 pub use systray::{SystrayConfig, TrayItemOverride};
+pub use timer::{TimerConfig, TimerFormatMode};
 pub use types::TimeFormat;
 pub use volume::{AppIconSource, VolumeConfig};
 use wayle_derive::wayle_config;
@@ -134,6 +136,8 @@ pub struct ModulesConfig {
     pub separator: SeparatorConfig,
     /// System tray module.
     pub systray: SystrayConfig,
+    /// Countdown timer module.
+    pub timer: TimerConfig,
     /// Volume control module.
     pub volume: VolumeConfig,
     /// Weather display module.

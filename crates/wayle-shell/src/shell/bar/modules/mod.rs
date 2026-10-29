@@ -25,6 +25,7 @@ mod registry;
 mod separator;
 mod storage;
 mod systray;
+mod timer;
 mod volume;
 pub(crate) mod weather;
 mod window_title;
@@ -84,6 +85,7 @@ register_modules! {
     Separator => separator::Factory,
     Storage => storage::Factory,
     Systray => systray::Factory,
+    Timer => timer::Factory,
     Volume => volume::Factory,
     Weather => weather::Factory,
     WindowTitle => window_title::Factory,

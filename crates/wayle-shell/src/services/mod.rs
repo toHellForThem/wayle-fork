@@ -2,6 +2,8 @@
 
 pub mod idle_inhibit;
 pub mod shell_ipc;
+pub mod timer;
 
 pub use idle_inhibit::IdleInhibitService;
 pub use shell_ipc::ShellIpcService;
+pub use timer::TimerService;

@@ -32,7 +32,7 @@ use wayle_wallpaper::WallpaperService;
 use zbus::{Connection, fdo::DBusProxy};
 
 use crate::{
-    services::{IdleInhibitService, ShellIpcService},
+    services::{IdleInhibitService, ShellIpcService, TimerService},
     shell::ShellServices,
     startup::StartupTimer,
     watchers::build_extractor_config,
@@ -145,13 +145,8 @@ pub async fn init_services() -> Result<(StartupTimer, ShellServices), Box<dyn Er
     spawn_deferred_bluetooth(bluetooth.clone());
     spawn_deferred_power_profiles(power_profiles.clone());
 
-    let shell_ipc = match ShellIpcService::new().await {
-        Ok(service) => Arc::new(service),
-        Err(err) => {
-            warn!(error = %err, "Shell IPC service unavailable");
-            return Err(err.into());
-        }
-    };
+    let shell_ipc = init_shell_ipc().await?;
+    let timer_service = init_timer(config_service.clone()).await?;
 
     timer.mark_services_done();
 
@@ -171,12 +166,33 @@ pub async fn init_services() -> Result<(StartupTimer, ShellServices), Box<dyn Er
         notification: daemons.notification,
         sysinfo: core.sysinfo,
         systray: daemons.systray,
+        timer: timer_service,
         wallpaper: core.wallpaper,
         weather,
         shell_ipc,
     };
 
     Ok((timer, services))
+}
+
+async fn init_shell_ipc() -> Result<Arc<ShellIpcService>, Box<dyn Error>> {
+    match ShellIpcService::new().await {
+        Ok(service) => Ok(Arc::new(service)),
+        Err(err) => {
+            warn!(error = %err, "Shell IPC service unavailable");
+            Err(err.into())
+        }
+    }
+}
+
+async fn init_timer(config: Arc<ConfigService>) -> Result<Arc<TimerService>, Box<dyn Error>> {
+    match TimerService::new(config).await {
+        Ok(service) => Ok(Arc::new(service)),
+        Err(err) => {
+            warn!(error = %err, "Timer service unavailable");
+            Err(err.into())
+        }
+    }
 }
 
 async fn init_core_services(

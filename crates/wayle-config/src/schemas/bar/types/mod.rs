@@ -243,6 +243,8 @@ pub enum BarModule {
     Storage,
     /// System tray icons.
     Systray,
+    /// Countdown timer.
+    Timer,
     /// System updates indicator.
     Updates,
     /// Volume control.
@@ -311,6 +313,7 @@ impl BarModule {
             Self::Separator => "separator",
             Self::Storage => "storage",
             Self::Systray => "systray",
+            Self::Timer => "timer",
             Self::Updates => "updates",
             Self::Volume => "volume",
             Self::Weather => "weather",
@@ -346,6 +349,7 @@ impl BarModule {
             "separator" => Self::Separator,
             "storage" => Self::Storage,
             "systray" => Self::Systray,
+            "timer" => Self::Timer,
             "updates" => Self::Updates,
             "volume" => Self::Volume,
             "weather" => Self::Weather,
@@ -432,6 +436,7 @@ const BUILTIN_MODULES: &[&str] = &[
     "separator",
     "storage",
     "systray",
+    "timer",
     "updates",
     "volume",
     "weather",

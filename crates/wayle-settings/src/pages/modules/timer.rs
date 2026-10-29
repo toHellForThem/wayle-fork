@@ -1,0 +1,70 @@
+//! Timer module settings.
+
+use wayle_config::Config;
+
+use crate::{
+    editors::{enum_select::enum_select, number::number_u32, text::text, toggle::toggle},
+    pages::{
+        nav::LeafEntry,
+        sections::bar_button::{
+            BarButtonFields, actions_section, bar_display_section, colors_section,
+        },
+        spec::{SectionSpec, page_spec},
+    },
+};
+
+pub(crate) fn entry(config: &Config) -> LeafEntry {
+    let module = &config.modules.timer;
+
+    let fields = BarButtonFields {
+        icon_show: &module.icon_show,
+        label_show: &module.label_show,
+        label_max_length: &module.label_max_length,
+        border_show: &module.border_show,
+        icon_color: &module.icon_color,
+        icon_bg_color: &module.icon_bg_color,
+        label_color: &module.label_color,
+        button_bg_color: &module.button_bg_color,
+        border_color: &module.border_color,
+        left_click: &module.left_click,
+        right_click: &module.right_click,
+        middle_click: &module.middle_click,
+        scroll_up: &module.scroll_up,
+        scroll_down: &module.scroll_down,
+    };
+
+    LeafEntry {
+        id: "timer",
+        i18n_key: "settings-nav-timer",
+        icon: "ld-watch-symbolic",
+        spec: page_spec(
+            "settings-page-timer",
+            vec![
+                SectionSpec {
+                    title_key: "settings-section-general",
+                    items: vec![
+                        number_u32(&module.default_duration),
+                        number_u32(&module.step),
+                        enum_select(&module.format_mode),
+                        text(&module.format),
+                        toggle(&module.show_days),
+                        toggle(&module.show_hours),
+                        toggle(&module.show_minutes),
+                        toggle(&module.show_seconds),
+                        toggle(&module.show_command),
+                        toggle(&module.play_melody),
+                        text(&module.melody),
+                        toggle(&module.run_command),
+                        text(&module.command),
+                        text(&module.icon_inactive),
+                        text(&module.icon_active),
+                        text(&module.icon_paused),
+                    ],
+                },
+                bar_display_section(&fields),
+                colors_section(&fields),
+                actions_section(&fields),
+            ],
+        ),
+    }
+}

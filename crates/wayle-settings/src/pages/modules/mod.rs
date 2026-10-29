@@ -25,6 +25,7 @@ mod ram;
 mod separator;
 mod storage;
 mod systray;
+mod timer;
 mod volume;
 mod weather;
 mod window_title;
@@ -61,6 +62,7 @@ pub(crate) fn factories() -> Vec<fn(&Config) -> LeafEntry> {
         separator::entry,
         storage::entry,
         systray::entry,
+        timer::entry,
         volume::entry,
         weather::entry,
         window_title::entry,

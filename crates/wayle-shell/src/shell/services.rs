@@ -18,7 +18,7 @@ use wayle_systray::SystemTrayService;
 use wayle_wallpaper::WallpaperService;
 use wayle_weather::WeatherService;
 
-use crate::services::{IdleInhibitService, ShellIpcService};
+use crate::services::{IdleInhibitService, ShellIpcService, TimerService};
 
 /// Container for services used by shell components.
 ///
@@ -41,6 +41,7 @@ pub(crate) struct ShellServices {
     pub power_profiles: DeferredService<PowerProfilesService>,
     pub sysinfo: Arc<SysinfoService>,
     pub systray: Option<Arc<SystemTrayService>>,
+    pub timer: Arc<TimerService>,
     pub wallpaper: Option<Arc<WallpaperService>>,
     pub weather: Arc<WeatherService>,
     pub shell_ipc: Arc<ShellIpcService>,

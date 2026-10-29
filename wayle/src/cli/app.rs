@@ -11,7 +11,7 @@ use crate::cli::{
     icons::commands::IconsCommands, idle::commands::IdleCommands, media::commands::MediaCommands,
     notify::commands::NotifyCommands, panel::commands::PanelCommands,
     power::commands::PowerCommands, systray::commands::SystrayCommands,
-    wallpaper::commands::WallpaperCommands,
+    timer::commands::TimerCommands, wallpaper::commands::WallpaperCommands,
 };
 
 fn get_styles() -> Styles {
@@ -85,6 +85,12 @@ pub enum Commands {
         /// Systray subcommand to execute.
         #[command(subcommand)]
         command: SystrayCommands,
+    },
+    /// Timer control commands
+    Timer {
+        /// Timer subcommand to execute.
+        #[command(subcommand)]
+        command: TimerCommands,
     },
     /// Wallpaper control commands
     Wallpaper {

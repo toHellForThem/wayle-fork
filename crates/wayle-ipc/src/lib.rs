@@ -8,3 +8,6 @@ pub mod idle_inhibit;
 
 /// Shell IPC D-Bus client proxy.
 pub mod shell_ipc;
+
+/// Timer D-Bus client proxy.
+pub mod timer;

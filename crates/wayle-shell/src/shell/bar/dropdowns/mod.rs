@@ -8,6 +8,7 @@ mod media;
 mod network;
 mod notification;
 mod registry;
+mod timer;
 mod weather;
 
 pub(crate) use self::registry::{
@@ -49,5 +50,6 @@ register_dropdowns! {
     "media" => media::Factory,
     "network" => network::Factory,
     "notification" => notification::Factory,
+    "timer" => timer::Factory,
     "weather" => weather::Factory,
 }
